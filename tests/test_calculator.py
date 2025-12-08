@@ -106,6 +106,57 @@ class TestAddition:
 
         # Assert
         assert result == pytest.approx(expected)
+ 
+
+class TestValidInput:
+    def test_numbers_within_range(self):
+        # Arrange
+        calc = Calculator()
+        values = (100, 200, -100, -200)
+        expected = True
+
+        # Act
+        result = calc._validate_input(*values)
+
+        # Assert
+        assert result == expected
+
+    def test_positive_boundary_value(self):
+        """Test adding positive boundary value"""
+        # Arrange
+        calc = Calculator()
+        values = (1000000, 100)
+        expected = True
+
+        # Act
+        result = calc._validate_input(*values)
+
+        # Assert
+        assert result == expected
+    
+    def test_negative_boundary_vale(self):
+        """Test adding negative boundary value"""
+        # Arrange
+        calc = Calculator()
+        values = (-1000000, -100)
+        expected = True
+
+        # Act
+        result = calc._validate_input(*values)
+
+        # Assert
+        assert result == expected
+
+
+    def test_too_large_and_small_numbers(self):
+        """Test adding too large nubmers"""
+
+        # Arrange
+        calc = Calculator()
+        values = (1000001, 100103, -1000001, -10000212)
+
+        with pytest.raises(InvalidInputException):
+            calc._validate_input(*values)
 
 
 class TestSubtraction:
@@ -113,7 +164,17 @@ class TestSubtraction:
 
     def test_subtract_positive_numbers(self):
         """Test subtracting positive numbers."""
-        # TODO: Implement
+        # Arrange
+        calc = Calculator()
+        a = 20
+        b = 12
+        expected = 8
+
+        # Act
+        result = calc.subtract(a,b)
+
+        # Assert
+        assert result == expected
 
 
 class TestMultiplication:
@@ -121,7 +182,17 @@ class TestMultiplication:
 
     def test_multiply_positive_numbers(self):
         """Test multiplying positive numbers."""
-        # TODO: Implement
+        # Arrange
+        calc = Calculator()
+        a = 2
+        b = 8
+        expected = 16
+
+        #Act
+        result = calc.multiply(a,b)
+
+        #Assert
+        assert result == expected
 
 
 class TestDivision:
@@ -129,7 +200,29 @@ class TestDivision:
 
     def test_divide_positive_numbers(self):
         """Test dividing positive numbers."""
-        # TODO: Implement
+        # Arrange
+        calc = Calculator()
+        a = 15
+        b = 3
+        expected = 5
+
+        #Act
+        result = calc.divide(a,b)
+
+        #Assert
+        assert result == expected
+        
+    def test_zero_denominator(self):
+        """Tests zero donominator"""
+        # Arrange
+        calc = Calculator()
+        a = 15
+        b = 0
+
+        #Act
+        with pytest.raises(ValueError, match="Cannot divide by zero"):
+            calc.divide(a,b)
+
 
 
 
