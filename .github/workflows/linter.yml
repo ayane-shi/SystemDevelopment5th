@@ -6,7 +6,7 @@ jobs:
   linter-and-format:
     runs-on: ubuntu-latest
     permissions:
-      contests: read
+      contents: read
     steps:
       - name: Check code
         uses: actions/checkout@v4
