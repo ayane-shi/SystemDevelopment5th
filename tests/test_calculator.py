@@ -106,7 +106,7 @@ class TestAddition:
 
         # Assert
         assert result == pytest.approx(expected)
- 
+
 
 class TestValidInput:
     def test_numbers_within_range(self):
@@ -133,7 +133,7 @@ class TestValidInput:
 
         # Assert
         assert result == expected
-    
+
     def test_negative_boundary_vale(self):
         """Test adding negative boundary value"""
         # Arrange
@@ -146,7 +146,6 @@ class TestValidInput:
 
         # Assert
         assert result == expected
-
 
     def test_too_large_and_small_numbers(self):
         """Test adding too large nubmers"""
@@ -171,7 +170,7 @@ class TestSubtraction:
         expected = 8
 
         # Act
-        result = calc.subtract(a,b)
+        result = calc.subtract(a, b)
 
         # Assert
         assert result == expected
@@ -188,10 +187,10 @@ class TestMultiplication:
         b = 8
         expected = 16
 
-        #Act
-        result = calc.multiply(a,b)
+        # Act
+        result = calc.multiply(a, b)
 
-        #Assert
+        # Assert
         assert result == expected
 
 
@@ -206,12 +205,12 @@ class TestDivision:
         b = 3
         expected = 5
 
-        #Act
-        result = calc.divide(a,b)
+        # Act
+        result = calc.divide(a, b)
 
-        #Assert
+        # Assert
         assert result == expected
-        
+
     def test_zero_denominator(self):
         """Tests zero donominator"""
         # Arrange
@@ -219,10 +218,6 @@ class TestDivision:
         a = 15
         b = 0
 
-        #Act
+        # Act
         with pytest.raises(ValueError, match="Cannot divide by zero"):
-            calc.divide(a,b)
-
-
-
-
+            calc.divide(a, b)
